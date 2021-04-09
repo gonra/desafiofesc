@@ -6,7 +6,9 @@ Este projeto consta de 2 elementos
 
 - desafio-fe : Front-End Vue2
 
-Para a modelo das entidades foi construido no seguinte esquema, um produto com seu tipo relacionado
+Para a modelo das entidades foi construido no seguinte esquema, 
+
+* Produto com seu tipo relacionado
 
 
 | Product | 
@@ -17,8 +19,10 @@ Para a modelo das entidades foi construido no seguinte esquema, um produto com s
 | providerPrice |
 | stock |
 | lastupdate |
-| TypeProduct |
+| *TypeProduct*|
 
+
+* Tipo de produto
 
 
 | TypeProduct |
@@ -27,7 +31,7 @@ Para a modelo das entidades foi construido no seguinte esquema, um produto com s
 | description |
 
 
-E as operaçoes sobre o produto com os tipos de operaçoes (Movimentos)
+* Operaçoes sobre o produto e os tipos de operaçoes relacionado (Movimentos)
 
 
 |Operation |
@@ -37,8 +41,11 @@ E as operaçoes sobre o produto com os tipos de operaçoes (Movimentos)
 |quantity|
 |profit|
 |datetime|
-|Produto|
-|TypeOperation|
+|*Product*|
+|*TypeOperation*|
+
+
+* Tipo de operaçoes
 
 
 |TypeOperation|
@@ -50,6 +57,7 @@ E as operaçoes sobre o produto com os tipos de operaçoes (Movimentos)
 Para o tipo de movimento foi considerado o movimento de conferencia. A açao de Entrada e Saida, se distingue no valor positivo e negativo da quantidade.
 
 
+---
 
 ## desafio-be
 
@@ -59,7 +67,7 @@ Para executar
 
 Este projeto consta de um server API-REST com banco de dados HSQLDB em memoria. O banco de dados é povoado com dados de exemplo. A comunicaçao é realizada no porto 5000.
 
-Se usaram ferramentas de geraçao de codigo focados no requerimento do desafio dentro do tempo. 
+---
 
 ## desafio-fe
 
