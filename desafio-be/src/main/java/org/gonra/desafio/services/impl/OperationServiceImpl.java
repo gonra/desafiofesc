@@ -72,7 +72,7 @@ public class OperationServiceImpl implements IOperationService {
 
                 result = mapper.map(product, ProductDto.class);
             } else {
-                result.setId(-1);
+                result.setId(-1L);
             }
         }
         return result;

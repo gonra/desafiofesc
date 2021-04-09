@@ -1,10 +1,11 @@
 package org.gonra.desafio.dto;
 
 public class ProductDto {
-    private int id;
+    private Long id;
     private String code;
     private String description;
     private Double providerPrice;
+    private int stock;
     private TypeProductDto typeProduct;
     private String lastUpdate;
 
@@ -12,11 +13,11 @@ public class ProductDto {
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,6 +43,14 @@ public class ProductDto {
 
     public void setProviderPrice(Double providerPrice) {
         this.providerPrice = providerPrice;
+    }
+
+    public int getStock(){
+        return stock;
+    }
+
+    public void setStock(int stock){
+        this.stock = stock;
     }
 
     public TypeProductDto getTypeProduct() {
