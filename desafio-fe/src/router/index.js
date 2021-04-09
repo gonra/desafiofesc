@@ -10,22 +10,22 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Productos',
+    name: 'product',
     component: ProductView
   },
   {
     path: '/producttype',
-    name: 'Tipo de productos',
+    name: 'producttype',
     component: ProductTypeView
   },
   {
     path: '/operation',
-    name: 'Tipo de productos',
+    name: 'operation',
     component: OperationView
   },
   {
     path: '/operationtype',
-    name: 'Tipo de productos',
+    name: 'operationtype',
     component: OperationTypeView
   },
 ]
