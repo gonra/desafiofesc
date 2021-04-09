@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ProductView from '../views/ProductView.vue'
 import ProductTypeView from '../views/ProductTypeView'
+import ProductDetailView from '../views/ProductDetailView'
 import OperationView from '../views/OperationView'
 import OperationTypeView from '../views/OperationTypeView'
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'operationtype',
     component: OperationTypeView
   },
+  {
+    path: '/product/:id',
+    name: 'productDetailView',
+    component: ProductDetailView
+  }
 ]
 
 const router = new VueRouter({

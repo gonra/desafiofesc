@@ -60,6 +60,7 @@ public class OperationServiceImpl implements IOperationService {
             int quantity = product.getStock() + p.getQuantity();
             if (quantity > 0) {
                 product.setStock(quantity);
+                product.setLastupdate(dateFormat.format(new Date()));
                 productRepository.save(product);
 
                 Operation op = new Operation();

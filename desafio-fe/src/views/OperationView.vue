@@ -20,7 +20,7 @@
             <td>{{ item.datetime }}</td>
             <td>{{ item.product.description }}</td>
             <td>{{ item.quantity }}</td>
-            <td>{{ item.salesPrice }}</td>
+            <td>{{ item.salePrice }}</td>
             <td>{{ item.typeOperation.description }}</td>
             <td></td>
           </tr>

@@ -86,8 +86,13 @@ export default {
       if (ok) {
         HTTP.delete(`/api/operation/types/` + id).then((response) => {
           console.log(response.data);
+          alert("Registro eliminado");
+          for (var i = 0; i < this.typeOperationList.length; i++) {
+            if (this.typeOperationList[i].id === id) {
+              this.typeOperationList.splice(i, 1);
+            }
+          }
         });
-        alert("Registro eliminado");
       }
     },
   },

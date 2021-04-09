@@ -84,12 +84,17 @@ export default {
         title: "Eliminar",
         message: "Esta seguro de eliminar?",
       });
-      // If you throw an error, the method will terminate here unless you surround it wil try/catch
+
       if (ok) {
         HTTP.delete(`/api/product/types/` + id).then((response) => {
           console.log(response.data);
+          alert("Registro eliminado");
+          for (var i = 0; i < this.typeProductList.length; i++) {
+            if (this.typeProductList[i].id === id) {
+              this.typeProductList.splice(i, 1);
+            }
+          }
         });
-        alert("Registro eliminado");
       }
     },
   },
