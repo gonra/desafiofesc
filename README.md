@@ -8,9 +8,9 @@ Este projeto consta de 2 elementos
 
 Para a modelo das entidades foi construido no seguinte esquema, um produto com seu tipo relacionado
 
----------
-|Product |
-----------
+|---------|
+| Product | 
+|---------|
 |id|
 |code|
 |description|
@@ -18,19 +18,19 @@ Para a modelo das entidades foi construido no seguinte esquema, um produto com s
 |stock|
 |lastupdate|
 |TypeProduct|
----------
+|---------|
 
----------
+|---------|
 |TypeProduct |
-----------
+|----------|
 |id|
 |description|
----------
+|---------|
 
 E as operaçoes sobre o produto com os tipos de operaçoes (Movimentos)
----------
+|---------|
 |Operation |
-----------
+|----------|
 |id|
 |salePrice|
 |quantity|
@@ -38,14 +38,14 @@ E as operaçoes sobre o produto com os tipos de operaçoes (Movimentos)
 |datetime|
 |Produto|
 |TypeOperation|
----------
+|---------|
 
----------
+|---------|
 |TypeOperation|
-----------
+|----------|
 |id|
 |description|
----------
+|---------|
 
 Para o tipo de movimento foi considerado o movimento de conferencia. A açao de Entrada e Saida, se distingue no valor positivo e negativo da quantidade.
 
