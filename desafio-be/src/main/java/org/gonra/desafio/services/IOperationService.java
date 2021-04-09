@@ -5,7 +5,7 @@ import java.util.*;
 
 public interface IOperationService {
 
-    public List<OperationDto> findByParam(HashMap<String, String> params);
+    public List<OperationDto> findByParam(Long productId, Long typeOperationId);
 
     public OperationDto getOperationDtoById(Long id);
 

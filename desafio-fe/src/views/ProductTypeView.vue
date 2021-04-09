@@ -92,6 +92,7 @@ export default {
           for (var i = 0; i < this.typeProductList.length; i++) {
             if (this.typeProductList[i].id === id) {
               this.typeProductList.splice(i, 1);
+              break;
             }
           }
         });

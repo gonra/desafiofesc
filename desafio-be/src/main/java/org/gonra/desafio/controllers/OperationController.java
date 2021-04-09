@@ -27,15 +27,16 @@ public class OperationController {
 
     @GetMapping(value = "/")
     public List<OperationDto> getOperationList(@RequestParam(name = "productId", required = false) Long productId,
-            @RequestParam(name = "typeId", required = false) Long typeId) {
-        HashMap<String, String> pars = new HashMap<>();
+            @RequestParam(name = "typeOperationId", required = false) Long typeOperationId) {
+        Long _productId = -1L;
+        Long _typeOperationId = -1L;
         if (productId != null) {
-            pars.put("productId", "" + productId);
+            _productId = productId;
         }
-        if (typeId != null) {
-            pars.put("typeId", "" + typeId);
+        if (typeOperationId != null) {
+            _typeOperationId = typeOperationId;
         }
-        return operationService.findByParam(pars);
+        return operationService.findByParam(_productId, _typeOperationId);
     }
 
     @PostMapping(value = "/")

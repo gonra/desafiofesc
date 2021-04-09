@@ -7,6 +7,7 @@ public class OperationDto {
     private int quantity;
     private ProductDto product;
     private TypeOperationDto typeOperation;
+    private Double profit;
 
     public OperationDto() {
     }
@@ -57,6 +58,14 @@ public class OperationDto {
 
     public void setTypeOperation(TypeOperationDto typeOperation) {
         this.typeOperation = typeOperation;
+    }
+
+    public Double getProfit() {
+        return profit;
+    }
+
+    public void setProfit(Double profit) {
+        this.profit = profit;
     }
 
 }

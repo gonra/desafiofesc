@@ -31,8 +31,18 @@ public class OperationServiceImpl implements IOperationService {
     }
 
     @Override
-    public List<OperationDto> findByParam(HashMap<String, String> params) {
-        List<Operation> operationList = operationRepository.findAll();
+    public List<OperationDto> findByParam(Long productId, Long typeOperationId) {
+        List<Operation> operationList = new ArrayList<>();
+        if ((productId < 0) && (typeOperationId < 0)) {
+            operationList = operationRepository.findAll();
+        } else if ((productId < 0) && (typeOperationId > 0)) {
+            operationList = operationRepository.findByTypeOperationId(typeOperationId);
+        } else if ((productId > 0) && (typeOperationId < 0)) {
+            operationList = operationRepository.findByProductId(productId);
+        } else {
+            operationList = operationRepository.findByProductIdandTypeOperationId(productId, typeOperationId);
+        }
+
         if (operationList != null) {
             OperationDto[] dtoList = mapper.map(operationList, OperationDto[].class);
             return Arrays.asList(dtoList);
@@ -63,12 +73,17 @@ public class OperationServiceImpl implements IOperationService {
                 product.setLastupdate(dateFormat.format(new Date()));
                 productRepository.save(product);
 
+                Double profit = 0.0d;
+                if (p.getQuantity() < 0) {
+                    profit = (-1.0d) * p.getQuantity() * (p.getSalePrice() - product.getProviderPrice());
+                }
                 Operation op = new Operation();
                 op.setProduct(product);
                 op.setQuantity(p.getQuantity());
                 op.setSalePrice(p.getSalePrice());
                 op.setTypeOperation(typeOperation);
                 op.setDatetime(dateFormat.format(new Date()));
+                op.setProfit(profit);
                 operationRepository.save(op);
 
                 result = mapper.map(product, ProductDto.class);

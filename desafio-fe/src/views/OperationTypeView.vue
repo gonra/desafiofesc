@@ -90,6 +90,7 @@ export default {
           for (var i = 0; i < this.typeOperationList.length; i++) {
             if (this.typeOperationList[i].id === id) {
               this.typeOperationList.splice(i, 1);
+              break;
             }
           }
         });

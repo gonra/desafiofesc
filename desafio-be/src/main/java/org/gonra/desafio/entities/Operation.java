@@ -24,6 +24,9 @@ public class Operation implements Serializable {
     @Column(name = "quantity")
     private int quantity;
 
+    @Column(name = "profit")
+    private Double profit;
+
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;
@@ -82,5 +85,13 @@ public class Operation implements Serializable {
 
     public void setTypeOperation(TypeOperation typeOperation) {
         this.typeOperation = typeOperation;
+    }
+
+    public Double getProfit() {
+        return profit;
+    }
+
+    public void setProfit(Double profit) {
+        this.profit = profit;
     }
 }

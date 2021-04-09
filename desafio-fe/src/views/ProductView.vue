@@ -10,7 +10,7 @@
             <th>descriçao</th>
             <th>preço fornecedor</th>
             <th>stock</th>
-            <th>tipo</th>
+            <th>tipo de produto</th>
             <th></th>
           </tr>
         </thead>
@@ -180,9 +180,11 @@ export default {
         HTTP.delete(`/api/product/` + id).then((response) => {
           alert("Registro eliminado");
           console.log(response.data);
+
           for (var i = 0; i < this.productList.length; i++) {
             if (this.productList[i].id === id) {
               this.productList.splice(i, 1);
+              break;
             }
           }
         });
