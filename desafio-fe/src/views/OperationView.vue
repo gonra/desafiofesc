@@ -2,12 +2,11 @@
   <div class="home">
     <h2>Lista de Operaçoes</h2>
     <div>
-      Filtrar
       <table class="styled-table">
         <thead>
           <tr>
-            <th>Produto</th>
-            <th>Tipo de Operaçao</th>
+            <th>Filtro por Produto</th>
+            <th>Filtro por Tipo de Operaçao</th>
             <th></th>
           </tr>
         </thead>
@@ -15,7 +14,7 @@
           <tr>
             <td>
               <select v-model="productId">
-                <option value="-1">Seleccione un elemento</option>
+                <option value="-1">Selecione um elemento</option>
                 <option
                   v-for="item of productList"
                   v-bind:key="item.id"
@@ -27,7 +26,7 @@
             </td>
             <td>
               <select v-model="typeOperationId">
-                <option value="-1">Seleccione un elemento</option>
+                <option value="-1">Selecione um elemento</option>
                 <option
                   v-for="item of typeOperationList"
                   v-bind:key="item.id"

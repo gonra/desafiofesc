@@ -14,7 +14,7 @@ public interface IProductService {
 
     public Product getProductById(Long id);
 
-    public List<Product> getList();
+    public List<Product> getList(Long typeProductId);
 
     public Product updateProduct(Product p);
 

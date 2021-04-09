@@ -5,6 +5,35 @@
       <table class="styled-table">
         <thead>
           <tr>
+            <th>Filtrar por Tipo de Produto</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <select v-model="typeProductId">
+                <option value="-1">Seleccione um elemento</option>
+                <option
+                  v-for="item of typeProductList"
+                  v-bind:key="item.id"
+                  v-bind:value="item.id"
+                >
+                  {{ item.description }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <button @click="doFilter">Filtrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-if="!newProduct">
+      <table class="styled-table">
+        <thead>
+          <tr>
             <th>id</th>
             <th>codigo</th>
             <th>descriçao</th>
@@ -91,7 +120,7 @@
               </td>
               <td>
                 <select v-model="typeProductId">
-                  <option disabled value="">Seleccione un elemento</option>
+                  <option disabled value="-1">Seleccione un elemento</option>
                   <option
                     v-for="item of typeProductList"
                     v-bind:key="item.id"
@@ -133,7 +162,7 @@ export default {
       code: undefined,
       description: undefined,
       providerPrice: undefined,
-      typeProductId: undefined,
+      typeProductId: -1,
     };
   },
   created() {
@@ -166,9 +195,15 @@ export default {
           return true;
         });
       } else {
-        alert("Preço deve ser numerico");
+        alert("Preço deve ser numerico e positivo");
       }
       e.preventDefault();
+    },
+    doFilter() {
+      let filter = "typeProductId=" + this.typeProductId;
+      HTTP.get(`/api/product/?` + filter).then((response) => {
+        this.productList = response.data;
+      });
     },
     async showConfirm(id) {
       const ok = await this.$refs.confirmModal.show({

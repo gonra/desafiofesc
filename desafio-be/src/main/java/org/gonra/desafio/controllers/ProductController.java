@@ -29,9 +29,13 @@ public class ProductController {
     }
 
     @GetMapping(value = "/")
-    public List<ProductDto> getProductList() {
+    public List<ProductDto> getProductList(@RequestParam(name = "typeProductId", required = false) Long typeProductId) {
         ModelMapper mapper = new ModelMapper();
-        List<Product> p = productService.getList();
+        Long _typeProductId = -1L;
+        if (typeProductId != null) {
+            _typeProductId = typeProductId;
+        }
+        List<Product> p = productService.getList(_typeProductId);
         List<ProductDto> result = new ArrayList<>();
         if (p != null) {
             ProductDto[] p2 = mapper.map(p, ProductDto[].class);

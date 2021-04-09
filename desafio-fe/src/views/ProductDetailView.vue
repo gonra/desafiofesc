@@ -9,29 +9,45 @@
             <th>descriçao</th>
             <th>preço fornecedor</th>
             <th>stock</th>
-            <th>tipo</th>
+            <th>tipo de produto</th>
             <th>ultima atualizaçao</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-if="!edit">
             <td>{{ product.code }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.providerPrice }}</td>
             <td>{{ product.stock }}</td>
             <td>{{ product.typeProduct.description }}</td>
             <td>{{ product.lastUpdate }}</td>
-            <td></td>
+            <td><button @click="edit = true">Modificar</button></td>
           </tr>
           <tr v-if="edit">
-            <td>{{ product.code }}</td>
-            <td>{{ product.description }}</td>
-            <td>{{ product.providerPrice }}</td>
+            <td>
+              <input id="p1" v-model="product.code" type="text" name="p1" />
+            </td>
+            <td>
+              <input
+                id="p2"
+                v-model="product.description"
+                type="text"
+                name="p2"
+              />
+            </td>
+            <td>
+              <input
+                id="p3"
+                v-model="product.providerPrice"
+                type="text"
+                name="p3"
+              />
+            </td>
             <td>{{ product.stock }}</td>
             <td>{{ product.typeProduct.description }}</td>
             <td>{{ product.lastUpdate }}</td>
-            <td></td>
+            <td><button @click="doUpdate">Salvar</button></td>
           </tr>
         </tbody>
       </table>
@@ -155,6 +171,25 @@ export default {
         });
       } else {
         alert("Quantidade a retirar excede o disponivel");
+      }
+      e.preventDefault();
+    },
+    doUpdate(e) {
+      let pars = {
+        code: this.product.code,
+        description: this.product.description,
+        providerPrice: this.product.providerPrice,
+        typeProductId: this.product.typeProductId,
+      };
+      let pprice = Number(this.product.providerPrice);
+      if (pprice > 0) {
+        HTTP.post(`/api/product/` + this.productId, pars).then((response) => {
+          this.product = response.data;
+          this.edit = false;
+          return true;
+        });
+      } else {
+        alert("Preço deve ser numerico e positivo");
       }
       e.preventDefault();
     },

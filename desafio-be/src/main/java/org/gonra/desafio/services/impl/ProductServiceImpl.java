@@ -71,8 +71,12 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<Product> getList() {
-        return productRepository.findAll();
+    public List<Product> getList(Long typeProductId) {
+        if (typeProductId > -1) {
+            return productRepository.findByTypeProductId(typeProductId);
+        } else {
+            return productRepository.findAll();
+        }
     }
 
     @Override
